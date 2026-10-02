@@ -76,7 +76,7 @@ function loadRom(file){
   if(!file)return;
   const ext=file.name.toLowerCase().split('.').pop();
   if(ext!=='gb' && ext!=='gbc'){msg.textContent='Please choose a .GB or .GBC ROM.';return;}
-  window.EJS_gameUrl=file;
+  window.EJS_gameUrl = romUrl;
   window.EJS_gameName=file.name.replace(/\.[^.]+$/,'');
   window.EJS_core='gb';
   const script=document.createElement('script');
@@ -91,7 +91,8 @@ document.getElementById('rom2').onchange=e=>loadRom(e.target.files[0]);
 document.getElementById('fullscreen').onclick=()=>{
   (document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen).call(document.documentElement);
 };
-
+window.EJS_gameName = file.name;
+  
 reset.onclick=()=>location.reload();
 </script>
 </body>
